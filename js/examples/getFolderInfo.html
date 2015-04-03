@@ -1,0 +1,20 @@
+<script src="../lib/jsonrpcjs-0.1.8.js"></script>
+<script src="jsonrpcjs-init.js"></script>
+
+<script type="text/javascript">
+    var workspace = 'demo';
+    var folderId = 'd64e285f-059b-43c8-9458-2382f042143c'; // {"name": "Demo Images", "id": "d64e285f-059b-43c8-9458-2382f042143c"}
+
+    rpc.call('getFolderInfo', workspace, folderId, {
+        success: function (result) {
+            var folder = result.folder;
+            console.log('name: ' + folder.name);
+            console.log('project count: ' + folder.projectCount);
+
+            var created = new Date();
+            created.setUTCMilliseconds(folder.timeUTC.created);
+            console.log('created: ' + created);
+        },
+        scope: window
+    });
+</script>

@@ -1,0 +1,25 @@
+{
+  "project": {
+    "id": "35ad2620-3f53-41c7-b3bd-a77af19adcf9",
+    "name": "Big Image.tif",
+    "image": {
+      "id": "35ad2620-3f53-41c7-b3bd-a77af19adcf9/image01",
+      "width": 157142,
+      "height": 100500
+    },
+    "timeUTC": {
+      "created": 1391950224007,
+      "modified": 1391950224007
+    },
+    "attributes": [
+      {
+        "class": "com.simagis.live.attr.med.PatientAge",
+        "value": 99
+      },
+      {
+        "class": "com.simagis.live.attr.med.CaseStatus",
+        "value": "Final"
+      }
+    ]
+  }
+}

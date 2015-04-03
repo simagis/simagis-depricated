@@ -1,0 +1,21 @@
+{
+  "folder": {
+    "id": "d64e285f-059b-43c8-9458-2382f042143c",
+    "name": "Demo Images",
+    "projectCount": 2,
+    "timeUTC": {
+      "created": 1391950224007,
+      "modified": 1391950224007
+    },
+    "attributes": [
+      {
+        "class": "com.simagis.live.attr.med.PatientAge",
+        "value": 99
+      },
+      {
+        "class": "com.simagis.live.attr.med.CaseStatus",
+        "value": "Final"
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+<script src="../lib/jsonrpcjs-0.1.8.js"></script>
+<script src="jsonrpcjs-init.js"></script>
+
+<script type="text/javascript">
+    var workspace = 'demo';
+    var projectId = '35ad2620-3f53-41c7-b3bd-a77af19adcf9'; // {"name": "Big Image.tif", "id": "35ad2620-3f53-41c7-b3bd-a77af19adcf9"}
+
+    rpc.call('getProjectInfo', workspace, projectId, {
+        success: function (result) {
+            var project = result.project;
+            console.log('name: ' + project.name);
+            if (project.image) {
+                console.log('image id: ' + project.image.id);
+                console.log('image size: ' + project.image.width + "x" + project.image.height);
+            }
+        },
+        scope: window
+    });
+</script>
