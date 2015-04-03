@@ -1,0 +1,17 @@
+<script src="../lib/jsonrpcjs-0.1.8.js"></script>
+<script src="../lib/jsonrpcjs-init.js"></script>
+
+<script type="text/javascript">
+    var workspace = 'demo';
+    rpc.call('getFolders', workspace, {
+        success: function (result) {
+            var folders = result.folders;
+            console.log('Folder list of "' + workspace + '" workspace:');
+            for (var i = 0; i < folders.length; i++) {
+                var folder = folders[i];
+                console.log(folder.name + ': ' + folder.id);
+            }
+        },
+        scope: window
+    });
+</script>
