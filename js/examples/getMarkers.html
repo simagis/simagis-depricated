@@ -1,0 +1,19 @@
+<script src="../lib/jsonrpcjs-0.1.8.js"></script>
+<script src="jsonrpcjs-init.js"></script>
+
+<script type="text/javascript">
+    var workspace = 'demo';
+    var projectId = '35ad2620-3f53-41c7-b3bd-a77af19adcf9'; // {"name": "Big Image.tif", "id": "35ad2620-3f53-41c7-b3bd-a77af19adcf9"}
+
+    rpc.call('getMarkers', workspace, projectId, {
+        success: function (result) {
+            var markers = result.markers;
+            console.log('List of markers:');
+            for (var i = 0; i < markers.length; i++) {
+                var marker = markers[i];
+                console.log(marker.id + ' ' + marker.markerType +  ': ' + JSON.stringify(marker.geometry));
+            }
+        },
+        scope: window
+    });
+</script>
