@@ -1,0 +1,19 @@
+#idea config
+.idea/workspace.xml
+
+#java modules output
+classes/
+test-classes/
+
+#idea output
+/out/
+
+#idea/maven output
+target/
+
+#logs
+*.log
+
+#compiled
+*.class
+*.pyc
