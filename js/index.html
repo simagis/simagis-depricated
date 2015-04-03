@@ -1,0 +1,78 @@
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="lib/code-mirror/lib/codemirror.css">
+    <script type="text/javascript" src="lib/jsonrpcjs-0.1.8.js"></script>
+    <script type="text/javascript" src="lib/json2.js"></script>
+    <script src="lib/code-mirror/lib/codemirror.js"></script>
+    <script src="lib/code-mirror/mode/javascript/javascript.js"></script>
+    <script src="lib/code-mirror/addon/fold/foldcode.js"></script>
+    <script src="lib/code-mirror/addon/fold/foldgutter.js"></script>
+    <script src="lib/code-mirror/addon/fold/brace-fold.js"></script>
+    <style>
+        .CodeMirror {
+            height: 100%
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+    rpcUrl = window.location.protocol + "//" + window.location.host + '/json-rpc';
+
+    function showResult(json) {
+        editorRes.setValue(JSON.stringify(json, null, '    '));
+    }
+
+</script>
+<table style="width: 100%;height: 100%" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="50%"><textarea id="code" name="code" style="width: 100%;height: 100%">
+// Press Shift-F10 to Run code
+
+new jsonrpc.JsonRpc(rpcUrl).call('getFolders', 'demo', {
+    success: function (result) {
+        showResult(result);
+    },
+    failure: function (reason) {
+        alert('Method call failed because of ' + reason);
+    },
+    callback: function (success, data) {
+        console.log('Method call finished, success = ' + success);
+    },
+    scope: window
+});
+
+// JSON-RPC 2.0 client library for Javascript: https://github.com/gimmi/jsonrpcjs
+</textarea></td>
+        <td width="50%"><textarea id="res" name="res" style="width: 100%;height: 100%">// Press Ctrl-Q to fold JSON objects</textarea></td>
+    </tr>
+</table>
+<script type="text/javascript">
+    editorCode = CodeMirror.fromTextArea(document.getElementById("code"), {
+        lineNumbers: true,
+        matchBrackets: true,
+        extraKeys: {
+            "Shift-F10": function (cm) {
+                eval(cm.getValue());
+            }
+        },
+        mode: "text/typescript"
+    });
+    editorRes = CodeMirror.fromTextArea(document.getElementById("res"), {
+        lineNumbers: true,
+        matchBrackets: true,
+        autoCloseBrackets: true,
+        mode: {name: "javascript", json: true},
+        lineWrapping: true,
+        extraKeys: {
+            "Ctrl-Q": function (cm) {
+                cm.foldCode(cm.getCursor());
+            }
+        },
+        foldGutter: true,
+        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+    });
+</script>
+
+</body>
+</html>
